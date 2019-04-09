@@ -33,7 +33,7 @@ _Default theme 2_
 
 
 ## Downloads
-* Windows
+* Windows ([download](https://github.com/albertopereira/rena/releases/download/V0.1.0-beta1/rena.Setup.0.1.0.exe))
 * Linux
 * macOS
 

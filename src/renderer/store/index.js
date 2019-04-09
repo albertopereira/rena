@@ -73,6 +73,9 @@ export default new Vuex.Store({
       this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.splice(this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.findIndex((e) => e.id === task.id), 1)
     },
     CHANGE_TASK_GROUP (state, t) {
+      if (!state.currentGroupTaskId) {
+        state.currentGroupTaskId = this.getters.firstGroupTaskId
+      }
       this.getters.currentClient.tasks.filter((e) => e.id === t.toTaskGroupId)[0].tasks.push(t.task)
       this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.splice(
         this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.findIndex(

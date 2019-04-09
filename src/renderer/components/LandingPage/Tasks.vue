@@ -72,9 +72,6 @@
       }
     },
     mounted () {
-      this.$nextTick(() => {
-        this.$store.dispatch('changeCurrentGroupTaskID', this.firstGroupTaskId)
-      })
     },
     watch: {
     },
