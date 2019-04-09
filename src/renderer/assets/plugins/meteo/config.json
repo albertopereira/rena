@@ -1,0 +1,8 @@
+{
+  "pluginName": "meteo",
+  "name": "Meteo",
+  "author": "Alberto Pereira <albertopereira@gmail.com>",
+  "description": "A meteo plugin",
+  "license": null,
+  "main": "main.js"
+}

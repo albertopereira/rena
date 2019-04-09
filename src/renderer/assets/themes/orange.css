@@ -1,0 +1,161 @@
+#wrapper, .title  { 
+  font-family: 'Jura'; color: #FF8C00;
+}
+
+.doc-container{
+  backdrop-filter: none;
+}
+
+.doc{
+  border-top: 1px solid #FF8C00;
+  color: #FF8C00;
+}
+
+.doc:before{
+  border-left: 1px solid #FF8C00;
+}
+
+.doc:after{
+  border-left: 1px solid #FF8C00;
+}
+
+.current-client-data{
+  border: 1px solid #FF8C00;
+}
+
+
+.current-client-data table th{
+  color: #FF8C00;
+}
+
+.info-buttons button{
+  border: 1px solid #FF8C00;
+  color:#FF8C00; 
+}
+
+button{
+  border: 1px solid #FF8C00;
+  color:#FF8C00; 
+}
+
+.info-buttons button:hover, button:hover{
+  background-color:#FF8C00;
+}
+
+.nav button{
+  color: #FF8C00;
+}
+
+
+a{
+  color: #FF8C00;
+}
+
+.tasks .nav .title-task{
+  color: #FF8C00;
+}
+
+.tasks .nav span .title-task{
+  border: 1px solid #FF8C00;
+}
+
+.tasks .nav .title-task:hover, .tasks .nav .title-task.selected, .clients .selected{
+  background-color: #FF8C00;
+}
+
+.tasks .nav .new-task-group, .tasks .nav .new-task-group:hover{
+  border:0px;
+  background-color: rgba(0,0,0,0);
+}
+
+.tasks .nav .new-task-group input, .tasks .nav .new-task-group input:hover{
+  color: #FF8C00;
+  border: 1px solid #FF8C00;
+  background-color: rgba(0,0,0,0);
+}
+
+
+.new-task{
+  border: 1px solid #FF8C00;
+  color: #FF8C00;
+}
+
+.search-clients{
+  color: #FF8C00;
+}
+
+.dialog{
+  border: 1px solid #FF8C00;
+}
+
+code{
+  border: 1px solid #FF8C00;
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+  border: 1px solid #FF8C00;
+}
+
+
+.task-group li, input{
+  border: 1px solid #FF8C00;
+  color: #FF8C00;
+}
+
+.task-group li:hover{
+  background-color:  #FF8C00;
+  border: 1px solid #FF8C00;
+}
+
+.info-edit{
+  border: 1px solid #FF8C00;
+  color: #FF8C00;
+}
+
+.doc-alt-block .title {
+  color: #FF8C00;
+}
+
+.search-kb{
+  border: 1px solid #FF8C00;
+  color: #FF8C00;
+}
+
+.kb-title{
+  color: #FF8C00;
+}
+
+.editing-fields{
+  border: 1px solid #FF8C00;
+  color: #FF8C00;
+}
+
+.content ul li{
+  border-bottom: 1px solid #FF8C00;
+}
+
+.show-task{
+  color: #FF8C00;
+}
+
+.dialog-close{
+  color: #FF8C00;
+}
+
+.doc p {
+  color:#FF8C00;
+}
+
+.kb-dialog{
+  backdrop-filter: brightness(60%) blur(5px);
+}
+
+.terminalContainer {
+  border: 1px solid #FF8C00;
+}
+
+.xterm-background{
+  background-color: rgba(0,0,0,0);
+  color: #FF8C00;
+}

@@ -1,0 +1,151 @@
+#wrapper, .title  { 
+  color: #96d1d1;
+}
+
+.doc-container{
+  backdrop-filter: brightness(60%) blur(5);
+}
+
+.doc{
+  border-top: 1px solid #96d1d1;
+  color: #96d1d1;
+}
+
+.doc:before{
+  border-left: 1px solid #96d1d1;
+}
+
+.doc:after{
+  border-left: 1px solid #96d1d1;
+}
+
+.current-client-data{
+  border: 1px solid #96d1d1;
+}
+
+
+.current-client-data table th{
+  color: #96d1d1;
+}
+
+.info-buttons button{
+  border: 1px solid #96d1d1;
+  color:#96d1d1; 
+}
+
+button{
+  border: 1px solid #96d1d1;
+  color:#96d1d1; 
+}
+
+.info-buttons button:hover, button:hover{
+  background-color:#96d1d1;
+}
+
+.nav button{
+  color: #96d1d1;
+}
+
+
+a{
+  color: #96d1d1;
+}
+
+.tasks .nav .title-task{
+  color: #96d1d1;
+}
+
+.tasks .nav .title-task:hover, .tasks .nav .title-task.selected, .clients .selected{
+  background-color: #96d1d1;
+}
+
+.tasks .nav .new-task-group input{
+  color: #96d1d1;
+  border: 1px solid #96d1d1;
+}
+
+
+.new-task{
+  border: 1px solid #96d1d1;
+  color: #96d1d1;
+}
+
+.search-clients{
+  color: #96d1d1;
+}
+
+.dialog{
+  border: 1px solid #96d1d1;
+}
+
+.dialog-close{
+  color: #96d1d1;
+}
+
+code{
+  border: 1px solid #96d1d1;
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+  border: 1px solid #96d1d1;
+}
+
+
+.task-group li, input{
+  border: 1px solid #96d1d1;
+  color: #96d1d1;
+}
+
+.task-group li:hover{
+  background-color:  #96d1d1;
+  border: 1px solid #96d1d1;
+}
+
+.info-edit{
+  border: 1px solid #96d1d1;
+  color: #96d1d1;
+}
+
+.doc-alt-block .title {
+  color: #96d1d1;
+}
+
+.search-kb{
+  border: 1px solid #96d1d1;
+  color: #96d1d1;
+}
+
+.kb-title{
+  color: #96d1d1;
+}
+
+.editing-fields{
+  border: 1px solid #96d1d1;
+  color: #96d1d1;
+}
+
+.content ul li{
+  border-bottom: 1px solid #96d1d1;
+}
+
+.show-task{
+  color: #96d1d1;
+}
+
+.dialog-close{
+  color: #96d1d1;
+}
+
+.doc p {
+  color:#96d1d1;
+}
+
+.kb-dialog{
+  backdrop-filter: brightness(60%) blur(5px);
+}
+
+.xterm-background{
+  background-color: rgba(0,0,0,0.5);
+  color: #96d1d1;
+}
