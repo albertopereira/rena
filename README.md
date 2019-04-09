@@ -35,7 +35,7 @@ _Default theme 2_
 ## Downloads
 * Windows ([download](https://github.com/albertopereira/rena/releases/download/V0.1.0-beta1/rena.Setup.0.1.0.exe))
 * Linux
-* macOS
+* macOS ([download](https://github.com/albertopereira/rena/releases/download/V0.1.0-beta1/rena-0.0.1.dmg))
 
 ## Configuration
 The configuration file can be found in %APPDATA%/rena/config.json and has the following parameters:
