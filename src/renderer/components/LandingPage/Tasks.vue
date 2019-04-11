@@ -93,7 +93,9 @@
         this.saveData()
       },
       addTask () {
-        const maxId = Math.max.apply(Math, this.currentClient.tasks.filter((e) => e.id === this.currentGroupTaskId)[0].tasks.map(function (o) { return o.id }))
+        const maxId = Math.max.apply(null,
+          this.currentClient.tasks.map((t) => { return Math.max.apply(Math, t.tasks.map(function (o) { return o.id })) })
+        )
         this.$store.dispatch('addTask', {task: this.taskToAdd, id: maxId})
 
         this.taskToAdd = ''
