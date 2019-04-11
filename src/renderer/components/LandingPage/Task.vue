@@ -20,9 +20,9 @@
       </span>
       Set priority: <span @click="setPriority(task)" class="priority">{{ task.priority }}
       </span>
-      <div class="timer-block info-buttons" v-if="taskTimerStartValue">
-        <input type="text" v-model="taskTimerStartValue">
-        <input type="text" v-model="taskTimerEndValue">
+      <div class="timer-block info-buttons" v-if="timerStart">
+        <input type="text" v-model="timerStart">
+        <input type="text" v-model="timerEnd">
         <button href="" @click="saveTimer()">Save</button>
       </div>
     </span>
@@ -48,31 +48,43 @@
     },
     computed: {
       ...mapGetters(['currentGroupTaskId']),
-      taskTimerStartValue () {
-        let format = require('date-fns/format')
-        return this.task.timer.length ? format(
-          new Date(this.task.timer[this.task.timer.length - 1].start),
-          'dd/MM/uuuu, HH:mm:ss',
-          {locale: lang[this.$store.state.config.locale]}
-        )
-          : 0
+      tStart () {
+        return this.task.timer.length ? this.task.timer[this.task.timer.length - 1].start : 0
       },
-      taskTimerEndValue () {
-        let format = require('date-fns/format')
-        return this.task.timer.length ? format(
-          new Date(this.task.timer[this.task.timer.length - 1].end),
-          'dd/MM/uuuu, HH:mm:ss',
-          {locale: lang[this.$store.state.config.locale]}
-        )
-          : 0
+      tEnd () {
+        return this.task.timer.length ? this.task.timer[this.task.timer.length - 1].end : 0
       }
     },
     mounted () {
       this.editTask = JSON.parse(JSON.stringify(this.task))
+      // this.timerEnd = this.task.timer.length ? new Date(this.task.timer[this.task.timer.length - 1].end).toLocaleString('pt-PT') : 0
+      this.updateLocalTimes()
     },
     watch: {
+      tStart: function (val, newval) {
+        this.updateLocalTimes()
+      },
+      tEnd: function (val, newval) {
+        this.updateLocalTimes()
+      },
+      deep: true
     },
     methods: {
+      updateLocalTimes () {
+        let format = require('date-fns/format')
+
+        this.timerEnd = this.task.timer.length ? format(
+          new Date(this.task.timer[this.task.timer.length - 1].end),
+          'dd/MM/uuuu, HH:mm:ss',
+          {locale: lang[this.$store.state.config.locale]}
+        ) : 0
+
+        this.timerStart = this.task.timer.length ? format(
+          new Date(this.task.timer[this.task.timer.length - 1].start),
+          'dd/MM/uuuu, HH:mm:ss',
+          {locale: lang[this.$store.state.config.locale]}
+        ) : 0
+      },
       saveTimer () {
         // const blocksStart = this.timerStart.split(',')
         // const dateStart = blocksStart[0].split('/')
