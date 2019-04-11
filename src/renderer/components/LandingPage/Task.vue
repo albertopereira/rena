@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapGetters } from 'vuex'
   import lang from 'date-fns/locale'
   import parse from 'date-fns/parse'
   import getTime from 'date-fns/getTime'
@@ -47,7 +47,7 @@
       }
     },
     computed: {
-      ...mapState(['currentGroupTaskId'])
+      ...mapGetters(['currentGroupTaskId'])
     },
     mounted () {
       this.editTask = JSON.parse(JSON.stringify(this.task))

@@ -41,6 +41,7 @@ _Default theme 2_
 The configuration file can be found in %APPDATA%/rena/config.json and has the following parameters:
 * __altBlocks__ - an array with the 4 blocks in the lower left corner of the app. You can remove any of them;
 * __locale__ - the language locale you wish the app to use. This is used to format the presentation of the dates;
+* __allTasksGroups__ - the names of the task groups to be included in the all tasks by priority section;
 * __infoButtons__ - an array with the action buttons for each project. You can remove any of them;
 * __theme__ - the app theme. Right now, there's only 2 options: "default" or "orange";
 * __bgImage__ - the number of the image for the background. You can change it by hand or in the app (use the ctrl+arrow combination);

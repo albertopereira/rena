@@ -46,11 +46,10 @@
       }
     },
     computed: {
-      ...mapState(['currentClientName', 'currentGroupTaskId', 'allData']),
-      ...mapGetters(['allClients', 'currentClient', 'firstGroupTaskId']),
+      ...mapState(['currentClientName', 'allData']),
+      ...mapGetters(['allClients', 'currentClient', 'currentGroupTaskId']),
       currentTasks () {
-        // if there is no group selected then it's the first one (the one with the lowest id on app start)
-        return this.currentClient.tasks ? (!this.currentGroupTaskId ? this.currentClient.tasks.filter((e) => e.id === this.firstGroupTaskId) : this.currentClient.tasks.filter((e) => e.id === this.currentGroupTaskId)) : []
+        return this.currentClient.tasks ? this.currentClient.tasks.filter((e) => e.id === this.currentGroupTaskId) : []
       },
       // the total time for the tasks in the current group
       currentTotalTimer () {
@@ -77,8 +76,7 @@
     },
     methods: {
       groupTaskSelected (id) {
-        // returns the group selected or the first one (the one with the lowest id on app start)
-        return !this.currentGroupTaskId ? this.firstGroupTaskId : (this.currentGroupTaskId === id)
+        return this.currentGroupTaskId === id
       },
       changeCurrentGroupTask (id) {
         this.$store.dispatch('changeCurrentGroupTaskID', id)

@@ -25,7 +25,7 @@ export default new Vuex.Store({
   mutations: {
     CHANGE_CURRENT_CLIENT_NAME (state, clientName) {
       state.currentClientName = clientName
-      state.currentGroupTaskId = 0
+      state.currentGroupTaskId = state.allData.clients.filter(e => e.name === state.currentClientName)[0].tasks.length ? state.allData.clients.filter(e => e.name === state.currentClientName)[0].tasks.reduce((prev, current) => (prev.id < current.id) ? prev : current).id : 0
     },
     SET_DATA (state, data) {
       state.allData = data
@@ -73,9 +73,6 @@ export default new Vuex.Store({
       this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.splice(this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.findIndex((e) => e.id === task.id), 1)
     },
     CHANGE_TASK_GROUP (state, t) {
-      if (!state.currentGroupTaskId) {
-        state.currentGroupTaskId = this.getters.firstGroupTaskId
-      }
       this.getters.currentClient.tasks.filter((e) => e.id === t.toTaskGroupId)[0].tasks.push(t.task)
       this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.splice(
         this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.findIndex(
@@ -226,8 +223,8 @@ export default new Vuex.Store({
     lastChangedClient: (state) => {
       return state.allData.clients && state.allData.clients.length ? state.allData.clients.reduce((prev, current) => (prev.changed > current.changed) ? prev : current) : null
     },
-    firstGroupTaskId: (state) => {
-      return state.allData.clients.filter(e => e.name === state.currentClientName)[0].tasks.reduce((prev, current) => (prev.id < current.id) ? prev : current).id
+    currentGroupTaskId: (state) => {
+      return !state.currentGroupTaskId ? state.allData.clients.filter(e => e.name === state.currentClientName)[0].tasks.reduce((prev, current) => (prev.id < current.id) ? prev : current).id : state.currentGroupTaskId
     }
   },
 

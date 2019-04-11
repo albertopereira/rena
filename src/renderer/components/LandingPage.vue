@@ -70,8 +70,8 @@
       }
     },
     computed: {
-      ...mapState(['currentClientName', 'currentGroupTaskId', 'allData']),
-      ...mapGetters(['allClients', 'kb', 'lastChangedClient']),
+      ...mapState(['currentClientName', 'allData']),
+      ...mapGetters(['allClients', 'kb', 'lastChangedClient', 'currentGroupTaskId']),
       imagePath () {
         return this.background ? require(`@/assets/b${this.background}.jpg`) : null
       },
