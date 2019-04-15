@@ -41,7 +41,7 @@
           let format = require('date-fns/format')
           return format(
             new Date(this.currentClient.changed),
-            'dd/MM/uuuu, HH:mm:ss',
+            `dd/MM/uuuu, HH:mm:ss ${this.$store.state.config.day12 ? 'a' : ''}`,
             {locale: lang[this.$store.state.config.locale]}
           )
         } else {

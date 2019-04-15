@@ -18,12 +18,14 @@
           </ul>
         </span>
       </span>
-      Set priority: <span @click="setPriority(task)" class="priority">{{ task.priority }}
-      </span>
+      Set priority: 
+        <span @click="setPriority(task)" class="priority">{{ task.priority }}</span>
+      Set Deadline: 
+        <input type="datetime-local" v-model="_deadline">
+      <button href="" @click="saveTimer()">Save</button>
       <div class="timer-block info-buttons" v-if="timerStart">
         <input type="text" v-model="timerStart">
         <input type="text" v-model="timerEnd">
-        <button href="" @click="saveTimer()">Save</button>
       </div>
     </span>
   </span>
@@ -34,6 +36,8 @@
   import lang from 'date-fns/locale'
   import parse from 'date-fns/parse'
   import getTime from 'date-fns/getTime'
+  // import toDate from 'date-fns/toDate'
+  import parseISO from 'date-fns/parseISO'
   
   export default {
     name: 'task',
@@ -43,6 +47,7 @@
         showDetails: false,
         timerStart: 0,
         timerEnd: 0,
+        deadline: 0,
         editTask: {}
       }
     },
@@ -53,11 +58,34 @@
       },
       tEnd () {
         return this.task.timer.length ? this.task.timer[this.task.timer.length - 1].end : 0
+      },
+      _deadline: {
+        get () {
+          let format = require('date-fns/format')
+
+          if (this.deadline) {
+            return format(
+              new Date(this.deadline),
+              `uuuu-MM-dd HH:mm:ss`,
+              {locale: lang[this.$store.state.config.locale]}
+            )
+          }
+        },
+        set (d) {
+          this.deadline = d
+        }
       }
     },
     mounted () {
       this.editTask = JSON.parse(JSON.stringify(this.task))
       // this.timerEnd = this.task.timer.length ? new Date(this.task.timer[this.task.timer.length - 1].end).toLocaleString('pt-PT') : 0
+      let format = require('date-fns/format')
+
+      this.deadline = this.task.deadline ? format(
+        new Date(this.task.deadline),
+        `dd/MM/uuuu, HH:mm:ss ${this.$store.state.config.day12 ? 'a' : ''}`,
+        {locale: lang[this.$store.state.config.locale]}
+      ) : 0
       this.updateLocalTimes()
     },
     watch: {
@@ -75,13 +103,13 @@
 
         this.timerEnd = this.task.timer.length ? format(
           new Date(this.task.timer[this.task.timer.length - 1].end),
-          'dd/MM/uuuu, HH:mm:ss',
+          `dd/MM/uuuu, HH:mm:ss ${this.$store.state.config.day12 ? 'a' : ''}`,
           {locale: lang[this.$store.state.config.locale]}
         ) : 0
 
         this.timerStart = this.task.timer.length ? format(
           new Date(this.task.timer[this.task.timer.length - 1].start),
-          'dd/MM/uuuu, HH:mm:ss',
+          `dd/MM/uuuu, HH:mm:ss ${this.$store.state.config.day12 ? 'a' : ''}`,
           {locale: lang[this.$store.state.config.locale]}
         ) : 0
       },
@@ -90,13 +118,18 @@
         // const dateStart = blocksStart[0].split('/')
         // const timeStart = blocksStart[1].split(':')
         // this.editTask.timer[this.editTask.timer.length - 1].start = Date.parse(new Date(+dateStart[2], +dateStart[1] - 1, +dateStart[0], +timeStart[0], +timeStart[1], +timeStart[2]))
-        this.editTask.timer[this.editTask.timer.length - 1].start = getTime(parse(this.timerStart, 'dd/MM/uuuu, HH:mm:ss', new Date(), {locale: lang[this.$store.state.config.locale]}))
+        if (this.timerStart) {
+          this.editTask.timer[this.editTask.timer.length - 1].start = getTime(parse(this.timerStart, `dd/MM/uuuu, HH:mm:ss ${this.$store.state.config.day12 ? 'a' : ''}`, new Date(), {locale: lang[this.$store.state.config.locale]}))
+        }
+        if (this.timerEnd) {
+          this.editTask.timer[this.editTask.timer.length - 1].end = getTime(parse(this.timerEnd, `dd/MM/uuuu, HH:mm:ss ${this.$store.state.config.day12 ? 'a' : ''}`, new Date(), {locale: lang[this.$store.state.config.locale]}))
+        }
 
         // const blocksEnd = this.timerEnd.split(',')
         // const dateEnd = blocksEnd[0].split('/')
         // const timeEnd = blocksEnd[1].split(':')
         // this.editTask.timer[this.editTask.timer.length - 1].end = Date.parse(new Date(+dateEnd[2], +dateEnd[1] - 1, +dateEnd[0], +timeEnd[0], +timeEnd[1], +timeEnd[2]))
-        this.editTask.timer[this.editTask.timer.length - 1].end = getTime(parse(this.timerEnd, 'dd/MM/uuuu, HH:mm:ss', new Date(), {locale: lang[this.$store.state.config.locale]}))
+        this.editTask.deadline = getTime(parseISO(this.deadline))
         this.saveConfig()
       },
       deleteTask () {
@@ -173,5 +206,9 @@
 
 .task-group ul li {
   backdrop-filter: blur(10px);
+}
+
+.priority{
+  margin-right: 5px;
 }
 </style>

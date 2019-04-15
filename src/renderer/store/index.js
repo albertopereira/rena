@@ -49,8 +49,11 @@ export default new Vuex.Store({
       this.getters.currentClient.tasks.filter((e) => e.id === state.currentGroupTaskId)[0].tasks.map((e) => {
         if (e.id === task.id) {
           e.text = task.text
-          e.timer[e.timer.length - 1].start = task.timer[0].start
-          e.timer[e.timer.length - 1].end = task.timer[0].end
+          e.deadline = task.deadline
+          if (task.timer.length && e.timer.length) {
+            e.timer[e.timer.length - 1].start = task.timer[0].start
+            e.timer[e.timer.length - 1].end = task.timer[0].end
+          }
         }
       })
     },

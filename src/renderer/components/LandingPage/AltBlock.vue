@@ -118,7 +118,11 @@
   }
 
   .alt-blocks-content{
-    padding-top: 12px;
+    height: 100%;
+    max-height: 360px;
+    overflow-y: auto;
+    display: flex;
+    width: 100%;
   }
 
   .search-kb{
